@@ -1,0 +1,531 @@
+:root {
+  --bg: #0b0f12;
+  --card: #0f1620;
+  --muted: #9aa6b2;
+  --accent: #7c5cff;
+  --accent-2: #00d4ff;
+  --glass: rgba(255, 255, 255, 0.03);
+  --max-width: 1100px;
+  --radius: 12px;
+  --gap: 1rem;
+}
+
+/* base */
+* {
+  box-sizing: border-box;
+}
+html {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial;
+  font-size: clamp(14px, 1.35vw, 16px);
+}
+body {
+  margin: 0;
+  color: #e6eef6;
+  background: linear-gradient(180deg, #060608 0%, var(--bg) 100%);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* live canvas background sits behind everything */
+#bgCanvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* container keeps a comfortable max-width and responsive padding */
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: None; /*var(--max-width);*/
+  width: 100%; /*calc(100% - 2rem);*/
+  margin: clamp(16px, 4vw, 48px) auto;
+  padding: clamp(12px, 3vw, 36px);
+}
+
+header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+.logo {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+.logo .mark {
+  width: clamp(40px, 5vw, 56px);
+  height: clamp(40px, 5vw, 56px);
+  border-radius: 12px;
+  background-image: url("logo.jpg");
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 6px 20px rgba(0, 217, 255, 0.12);
+  flex-shrink: 0;
+}
+h1 {
+  margin: 0;
+  font-size: clamp(1.05rem, 2.2vw, 1.4rem);
+}
+p.lead {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* nav/buttons */
+.nav {
+  margin-left: auto;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.btn {
+  padding: 0.25rem 0.4rem;
+  font-size: 0.8rem;
+  border-radius: 8px;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.065)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.575);
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.386);
+  cursor: pointer;
+  color: inherit;
+  font-weight: 600;
+}
+.btn.primary {
+  padding: 0.6rem 0.9rem;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+/* card */
+.card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.01)
+  );
+  border-radius: 14px;
+  padding: 1.2rem;
+  box-shadow: 0 10px 40px rgba(2, 6, 23, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.card h2 {
+  margin: 0 0 0.45rem 0;
+}
+.muted {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ===== grid-2: FIXED (no stray characters) ===== */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.9rem;
+}
+
+.feature {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+.feature .ic {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  min-height: 52px;
+  border-radius: 10px;
+  background: linear-gradient(
+    180deg,
+    rgba(198, 239, 242, 0.106),
+    rgba(23, 4, 108, 0.243)
+  );
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+.feature h4 {
+  margin: 0.3rem 0 0.05rem 0;
+  line-height: 1.2;
+}
+.feature p {
+  margin-top: 0.1rem;
+}
+
+.env-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.6rem;
+}
+.env-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.6rem;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.04), transparent);
+}
+.env-row strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.dspenvhead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* badges grouped on the right */
+.badges {
+  display: flex;
+  gap: 0.3rem;
+  margin-left: auto;
+  flex: 0 0 auto;
+}
+
+/* individual badge */
+.badge {
+  padding: 0.2rem 0.45rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+/* responsive shrink */
+@media (max-width: 560px) {
+  .command-header {
+    padding-right: 5.5rem;
+  }
+  .badge {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.35rem;
+  }
+}
+
+.badge.mand {
+  font-size: 0.55rem;
+  background: linear-gradient(90deg, #ff6b6b, #f91546);
+  color: white;
+}
+.badge.opt {
+  font-size: 0.55rem;
+  background: linear-gradient(90deg, #653ffd, #57e2fd);
+  color: white;
+}
+.badge.admin {
+  background: linear-gradient(90deg, #0295fe, #01c44f);
+  color: white;
+}
+.badge.all {
+  background: linear-gradient(45deg, #a91dfb, #ec66f8);
+  color: white;
+}
+.badge.owner {
+  background: linear-gradient(45deg, #f9f91b, #f2f2f2, #fbd137);
+  color: #111;
+}
+.badge.dev {
+  background: linear-gradient(45deg, #fa1818, #f2f2f2, #ff0040);
+  color: black;
+}
+
+/* commands */
+.command-card {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.9rem;
+  border-radius: 10px;
+  margin-bottom: 0.9rem;
+}
+.command-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+}
+
+.command-header .cmd-name,
+.command-header strong {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.syntax-box {
+  position: relative;
+  margin-top: 0.6rem;
+}
+.syntax-box pre {
+  background: rgba(0, 0, 0, 0.45);
+  padding: 1.05rem;
+  border-radius: 8px;
+  overflow: auto;
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono",
+    monospace;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+}
+.copy-syntax {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 0.85rem;
+  padding: 0.3rem 0.45rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  color: white;
+}
+.copy-syntax.copied {
+  background: linear-gradient(90deg, #4ea6ff, #0075ff);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.accordion .acc-btn {
+  width: 100%;
+  text-align: left;
+  padding: 0.9rem;
+  background: none;
+  border: none;
+  color: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+}
+.acc-content {
+  display: none;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-figure {
+  width: 100%;
+  max-width: 420px;
+}
+.hero-img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  object-fit: contain;
+}
+
+.dev-credits {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.dev-credits img {
+  flex-shrink: 0;
+}
+/* blobs */
+.blob {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(40px);
+  opacity: 0.12;
+  z-index: 1;
+}
+.blob.b1 {
+  width: 280px;
+  height: 280px;
+  left: -80px;
+  top: -80px;
+  background: linear-gradient(45deg, var(--accent), var(--accent-2));
+}
+.blob.b2 {
+  width: 220px;
+  height: 220px;
+  right: -40px;
+  bottom: -100px;
+  background: linear-gradient(45deg, #00d4ff, #7c5cff);
+}
+
+.muted-sm {
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+/* responsive tweaks */
+@media (max-width: 900px) {
+  .container {
+    padding: 1rem;
+  }
+  .logo .mark {
+    width: 48px;
+    height: 48px;
+  }
+  header {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  .command-card,
+  .command-header.dspenvhead {
+    position: relative;
+  }
+
+  /* pin badges to the right edge of the card/header */
+  .command-header.dspenvhead .badges {
+    position: absolute;
+    right: 0.6rem; /* how far from the card edge — decrease to move more right */
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 0; /* remove flex pushing since we use absolute here */
+    display: flex;
+    gap: 0.35rem;
+    z-index: 2;
+  }
+
+  /* keep text from running under the absolute badges */
+  .command-header.dspenvhead .cmd-name,
+  .command-header.dspenvhead strong {
+    padding-right: 4.5rem; /* reserve space for badges; increase if badges are wider */
+    min-width: 0;
+  }
+
+  /* slightly smaller badges on narrow screens (optional) */
+  .command-header.dspenvhead .badge {
+    font-size: 0.7rem;
+    padding: 0.12rem 0.32rem;
+  }
+  .server-spec-card {
+    width: 23rem;
+    margin-left: 0.8rem;
+  }
+}
+
+.env-row .dspenvhead {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+}
+.env-row .badges {
+  justify-content: flex-start;
+  margin-left: 0;
+}
+footer {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* micro-animations */
+.pulse {
+  animation: pulse 2.8s infinite;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 0.88;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* responsive */
+@media (max-width: 700px) {
+  .container {
+    padding: 18px;
+    margin: 18px;
+  }
+  .logo .mark {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* small helper */
+.muted-sm {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.server-spec-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  padding: 1rem;
+  overflow: hidden;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.08);
+}
+
+.server-spec-card h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.05rem;
+}
+
+.server-spec-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.server-spec-card li {
+  padding: 0.25rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.spec-glow {
+  position: absolute;
+  top: -40%;
+  left: -40%;
+  width: 180%;
+  height: 180%;
+  background: conic-gradient(
+    from 0deg,
+    var(--accent) 0%,
+    var(--accent-2) 25%,
+    transparent 50%,
+    var(--accent) 75%,
+    transparent 100%
+  );
+  animation: rotateGlow 8s linear infinite;
+  opacity: 0.12;
+}
+
+@keyframes rotateGlow {
+  to {
+    transform: rotate(360deg);
+  }
+}
