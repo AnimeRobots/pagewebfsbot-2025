@@ -20,12 +20,12 @@ function showPROFILE(message) {
         Telegram.WebApp.openTelegramLink(
           "https://t.me/Maid_Robot?start=FileSharingBotWebApp"
         );
-      } else {
-        window.close();
       }
+      // If buttonId is "close", nothing happens
     }
   );
 }
+
 function OpenLink(url) {
   Telegram.WebApp.openTelegramLink("https://t.me/" + url);
 }
@@ -46,7 +46,7 @@ async function copyText(text, btn = null, duration = 1200) {
 }
 
 function downloadEnvTemplate() {
-  const fullUrl = window.location.origin + "/static/BOT.env.txt";
+  const fullUrl = window.location.origin + "assets/BOT.env.txt";
   Telegram.WebApp.downloadFile({
     url: fullUrl,
     file_name: "BOT.env.txt",
