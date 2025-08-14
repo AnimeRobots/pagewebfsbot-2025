@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Anime Chat Community [English]</title>
+    <meta
+      name="description"
+      content="Single-file dark themed landing page for your bot. Replace placeholder content and images."
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="MobileOptimized" content="176" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="robots" content="noindex,nofollow" />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <canvas id="bgCanvas"></canvas>
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b1"></div>
+
+    <div class="container">
+      <header>
+        <div class="logo">
+          <div class="mark"></div>
+          <div>
+            <h1>FileSharingBot — @AnimeRobots</h1>
+            <p class="lead">
+              Telegram Bot to store posts and documents accessible via special
+              links.
+            </p>
+          </div>
+        </div>
+        <nav class="nav" aria-label="Primary">
+          <button class="btn primary" onclick="location.href='#deploy'">
+            Contact / Deploy
+          </button>
+        </nav>
+      </header>
+
+      <main>
+        <!-- ABOUT SECTION -->
+        <!-- ABOUT SECTION -->
+        <section class="card" id="about">
+          <div
+            style="
+              display: flex;
+              gap: 1rem;
+              align-items: center;
+              flex-wrap: wrap;
+            "
+          >
+            <div style="flex: 1; min-width: 220px">
+              <h2>About this bot & features</h2>
+              <p class="muted">
+                A Telegram bot designed to store posts and documents, accessible
+                through special links. This bot provides a convenient way to
+                manage and share content within Telegram.
+              </p>
+
+              <div class="grid-2" style="margin-top: 0.7rem">
+                <div class="feature">
+                  <div class="ic"><i class="bx bx-md bxs-bolt"></i></div>
+                  <div>
+                    <h4>Fast</h4>
+                    <p class="muted-sm">
+                      Low-latency responses and memory-friendly runtime.
+                    </p>
+                  </div>
+                </div>
+                <div class="feature">
+                  <div class="ic"><i class="bx bx-lock bx-md"></i></div>
+                  <div>
+                    <h4>Secure</h4>
+                    <p class="muted-sm">
+                      Encryptions and permission layers included.
+                    </p>
+                  </div>
+                </div>
+                <div class="feature">
+                  <div class="ic"><i class="bx bx-customize bx-md"></i></div>
+                  <div>
+                    <h4>Fully Customizable</h4>
+                    <p class="muted-sm">
+                      Pluggable commands, easy variables setup while bot is
+                      running.
+                    </p>
+                  </div>
+                </div>
+                <div class="feature">
+                  <div class="ic"><i class="bx bx-layer-plus bx-md"></i></div>
+                  <div>
+                    <h4>Multi-ForceSub</h4>
+                    <p class="muted-sm">
+                      Ability to add/remove 20+ groups/channels (Join/Request)
+                      as forcesub.
+                    </p>
+                  </div>
+                </div>
+                <div class="feature">
+                  <div class="ic"><i class="bx bx-trash-alt bx-md"></i></div>
+                  <div>
+                    <h4>Auto-Delete</h4>
+                    <p class="muted-sm">
+                      Auto delete files to protect from copyright after
+                      configurable time.
+                    </p>
+                  </div>
+                </div>
+                <div class="feature">
+                  <div class="ic">
+                    <i class="bx bxs-folder-minus bx-md"></i>
+                  </div>
+                  <div>
+                    <h4>Protect Content</h4>
+                    <p class="muted-sm">
+                      Prevent users from forwarding file from bot.
+                    </p>
+                  </div>
+                </div>
+                <div class="feature">
+                  <div class="ic"><i class="bx bxs-captions bx-md"></i></div>
+                  <div>
+                    <h4>Custom Caption</h4>
+                    <p class="muted-sm">
+                      Add custom captions to each file, with file name or
+                      original caption.
+                    </p>
+                  </div>
+                </div>
+                <div class="feature">
+                  <div class="ic"><i class="bx bxs-server bx-md"></i></div>
+                  <div>
+                    <h4>Statistics</h4>
+                    <p class="muted-sm">
+                      Detailed bot stats of database and server.
+                    </p>
+                  </div>
+                </div>
+                <div class="feature">
+                  <div class="ic">
+                    <i class="bx bx-shield-quarter bx-md"></i>
+                  </div>
+                  <div>
+                    <h4>Virtual Admins</h4>
+                    <p class="muted-sm">
+                      Add users as admin who can generate links
+                    </p>
+                  </div>
+                </div>
+                <div class="feature">
+                  <div class="ic"><i class="bx bxs-megaphone bx-md"></i></div>
+                  <div>
+                    <h4>Broadcast</h4>
+                    <p class="muted-sm">
+                      Send message to all users with full report of broadcast.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- COMMANDS SECTION (merged from command.html) -->
+        <section class="card" id="commands">
+          <h2>Bot Commands</h2>
+
+          <div class="command-card">
+            <div class="command-header dspenvhead">
+              <strong>/start</strong>
+              <div class="badges">
+                <span class="badge all"> Everyone</span>
+              </div>
+            </div>
+            <p>
+              Check if bot is alive or not, get files, about bot & command menu.
+            </p>
+            <div class="muted-sm">Arguments: <code>None</code></div>
+            <div class="syntax-box">
+              <pre class="syntax">/start</pre>
+              <button class="copy-syntax" onclick="copyText('/start', this)">
+                Copy
+              </button>
+            </div>
+          </div>
+          <div class="command-card">
+            <div class="command-header dspenvhead">
+              <strong class="cmd-name">/ping</strong>
+              <div class="badges">
+                <span class="badge all">Everyone</span>
+              </div>
+            </div>
+            <p>Check bot's uptime and latency.</p>
+            <div class="muted-sm">Arguments: <code>None</code></div>
+            <div class="syntax-box">
+              <pre class="syntax">/ping</pre>
+              <button class="copy-syntax" onclick="copyText('/ping', this)">
+                Copy
+              </button>
+            </div>
+          </div>
+          <div class="command-card">
+            <div class="command-header dspenvhead">
+              <strong>/batch</strong>
+              <div class="badges">
+                <span class="badge admin">Admin</span>
+                <span class="badge owner">Owner</span>
+              </div>
+            </div>
+            <p>
+              Create a permanent sharable link for multiple files. Simply send
+              this cmd and bot will promt you with all necessary steps.
+            </p>
+            <div class="muted-sm">Arguments: <code>None</code></div>
+            <div class="syntax-box">
+              <pre class="syntax">/batch</pre>
+              <button class="copy-syntax" onclick="copyText('/batch', this)">
+                Copy
+              </button>
+            </div>
+          </div>
+          <div class="command-card">
+            <div class="command-header dspenvhead">
+              <strong>/genlink</strong>
+              <div class="badges">
+                <span class="badge admin">Admin</span>
+                <span class="badge owner">Owner</span>
+              </div>
+            </div>
+            <p>
+              Create a permanent sharable link for a single file. Simply send
+              this cmd and bot will promt you with all necessary steps.
+            </p>
+            <div class="muted-sm">Arguments: <code>None</code></div>
+            <div class="syntax-box">
+              <pre class="syntax">/genlink</pre>
+              <button class="copy-syntax" onclick="copyText('/genlink', this)">
+                Copy
+              </button>
+            </div>
+          </div>
+          <div class="command-card">
+            <div class="command-header dspenvhead">
+              <strong>/addadmin</strong>
+              <div class="badges">
+                <span class="badge owner">Owner</span>
+              </div>
+            </div>
+            <p>
+              Add a user as virtual admin who can generate links or batch links.
+              This is useful for trusted users who need access to link
+              generation without full admin rights. Simply send this cmd and bot
+              will let you select user easily.
+            </p>
+            <div class="muted-sm">Arguments: <code>None</code></div>
+            <div class="syntax-box">
+              <pre class="syntax">/addadmin</pre>
+              <button class="copy-syntax" onclick="copyText('/addadmin', this)">
+                Copy
+              </button>
+            </div>
+          </div>
+          <div class="command-card">
+            <div class="command-header dspenvhead">
+              <strong>/admins</strong>
+              <div class="badges">
+                <span class="badge owner">Owner</span>
+              </div>
+            </div>
+            <p>
+              List all virtual admins with link to thier profile and button to
+              remove them from adminlist.
+            </p>
+            <div class="muted-sm">Arguments: <code>None</code></div>
+            <div class="syntax-box">
+              <pre class="syntax">/admins</pre>
+              <button class="copy-syntax" onclick="copyText('/admins', this)">
+                Copy
+              </button>
+            </div>
+          </div>
+          <div class="command-card">
+            <div class="command-header dspenvhead">
+              <strong>/addfsc</strong>
+              <div class="badges">
+                <span class="badge owner">Owner</span>
+              </div>
+            </div>
+            <p>
+              Add a group or channel as force-subscribe for bot. This will
+              require users to join the specified group/channel before using the
+              bot. Send this cmd with Arguments and bot will let you select
+              group or channel easily.<br /><br />
+              $requested : user just need to send join request to group/channel
+              <br />
+              $joined : user must join the group/channel
+            </p>
+            <div class="muted-sm">
+              Arguments: <code>($requested | $joined)</code>
+            </div>
+            <div class="syntax-box">
+              <pre class="syntax">/addfsc argument (str, CaseSensitive)</pre>
+              <button
+                class="copy-syntax"
+                onclick="copyText('$requested or $joined   /addfsc', this)"
+              >
+                Copy
+              </button>
+            </div>
+          </div>
+          <div class="command-card">
+            <div class="command-header dspenvhead">
+              <strong>/fsc</strong>
+              <div class="badges">
+                <span class="badge owner">Owner</span>
+              </div>
+            </div>
+            <p>
+              List all force-subscribed groups or channels with buttons to
+              remove them from the list. This is useful for managing your
+              force-subscribe settings.
+            </p>
+            <div class="muted-sm">Arguments: <code>None</code></div>
+            <div class="syntax-box">
+              <pre class="syntax">/fsc</pre>
+              <button class="copy-syntax" onclick="copyText('/fsc', this)">
+                Copy
+              </button>
+            </div>
+          </div>
+          <div class="command-card">
+            <div class="command-header dspenvhead">
+              <strong>/forwarding</strong>
+              <div class="badges">
+                <span class="badge owner">Owner</span>
+              </div>
+            </div>
+            <p>
+              Enable or disable forwarding of files from the bot. When TRUE,
+              users can forward files to others; when FALSE, files can only be
+              accessed through the bot.
+            </p>
+            <div class="muted-sm">Arguments: <code>(True | False)</code></div>
+            <div class="syntax-box">
+              <pre class="syntax">
+/forwarding Argument (bool, CaseInsensitive)</pre
+              >
+              <button
+                class="copy-syntax"
+                onclick="copyText('True or false /forwarding ', this)"
+              >
+                Copy
+              </button>
+            </div>
+          </div>
+          <div class="command-card">
+            <div class="command-header dspenvhead">
+              <strong>/deltime</strong>
+              <div class="badges">
+                <span class="badge owner">Owner</span>
+              </div>
+            </div>
+            <p>
+              Set the auto-delete time for files stored by the bot. This
+              determines how long files will be kept before being automatically
+              deleted to protect against copyright issues. <br />Enter zero to
+              disable auto-deletion.
+            </p>
+            <div class="muted-sm">Arguments: <code>(int | 0)</code></div>
+            <div class="syntax-box">
+              <pre class="syntax">/deltime Argument (int, +)</pre>
+              <button
+                class="copy-syntax"
+                onclick="copyText('/deltime 60', this)"
+              >
+                Copy
+              </button>
+            </div>
+          </div>
+          <div class="command-card">
+            <div class="command-header dspenvhead">
+              <strong>/addcaption</strong>
+              <div class="badges">
+                <span class="badge owner">Owner</span>
+              </div>
+            </div>
+            <p>
+              Add custom captions to files sent by the bot. This allows you to
+              include file names or original captions in the bot's responses.
+              Simply send this cmd and bot will let you set caption easily.
+            </p>
+            <div class="muted-sm">Arguments: <code>None</code></div>
+            <div class="syntax-box">
+              <pre class="syntax">/addcaption</pre>
+              <button
+                class="copy-syntax"
+                onclick="copyText('/addcaption', this)"
+              >
+                Copy
+              </button>
+            </div>
+          </div>
+          <div class="command-card">
+            <div class="command-header dspenvhead">
+              <strong>/formatb</strong>
+              <div class="badges">
+                <span class="badge dev">Devs</span>
+                <span class="badge owner">Owner</span>
+              </div>
+            </div>
+            <p>
+              Format the replied message to include buttons to broadcast the
+              message.
+            </p>
+            <div class="muted-sm">Arguments: <code>None</code></div>
+            <div class="syntax-box">
+              <pre class="syntax">/formatb (ReplyToMessege)</pre>
+              <button class="copy-syntax" onclick="copyText('/formatb', this)">
+                Copy
+              </button>
+            </div>
+          </div>
+          <div class="command-card">
+            <div class="command-header dspenvhead">
+              <strong>/broadcast</strong>
+              <div class="badges">
+                <span class="badge dev">Devs</span>
+                <span class="badge owner">Owner</span>
+              </div>
+            </div>
+            <p>
+              Broadcast a message to all users who have interacted with the bot.
+              This command allows you to send important updates or announcements
+              to all users. You must reply to a message with cmd.<br /><br />
+              $forward : forward the message to all users else copy message (as
+              bot)<br />
+              $pin : pin the message in the channel where bot is running.
+              <br /><br />
+              Tip: Use <code>/formatb</code> to format the message before
+              broadcasting.
+            </p>
+            <div class="muted-sm">
+              Arguments: <code>($pin |& $forward)</code>
+            </div>
+            <div class="syntax-box">
+              <pre class="syntax">
+/broadcast Arguments(Str, CaseSensitive) (ReplyToMessege)</pre
+              >
+              <button
+                class="copy-syntax"
+                onclick="copyText('/broadcast', this)"
+              >
+                Copy
+              </button>
+            </div>
+          </div>
+
+          <div class="command-card">
+            <div class="command-header dspenvhead">
+              <strong>/stats</strong>
+              <div class="badges">
+                <span class="badge dev">Devs</span>
+                <span class="badge owner">Owner</span>
+              </div>
+            </div>
+            <p>
+              Check bot statistics including total users, database usage,
+              settings, and server status. This command provides an overview of
+              the bot's resource usage and health, helping you monitor
+              performance and capacity.
+            </p>
+            <div class="muted-sm">Arguments: <code>None</code></div>
+            <div class="syntax-box">
+              <pre class="syntax">/stats</pre>
+              <button class="copy-syntax" onclick="copyText('/stats', this)">
+                Copy
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- DEPLOY / PRICING / CONTACT -->
+        <!-- DEPLOY TEST -->
+        <section class="card" id="deploy">
+          <div
+            style="
+              display: flex;
+              gap: 1rem;
+              flex-wrap: wrap;
+              align-items: center;
+            "
+          >
+            <div style="flex: 1; min-width: 220px">
+              <h2>Create Clone Of This Bot</h2>
+              <p class="muted">
+                Deploy this bot for your own channels — we'll handle the setup
+                on our server. Pay a one-time setup fee, then only cover the
+                server costs. Enjoy zero downtime and seamless performance for
+                100+ users simultaneously.
+              </p>
+              <div
+                style="
+                  margin-top: 0.6rem;
+                  display: flex;
+                  gap: 0.6rem;
+                  align-items: center;
+                "
+              >
+                <div>
+                  <div style="font-size: 1.35rem; font-weight: 800">
+                    ₹199
+                    <span style="font-size: 0.95rem; font-weight: 800">
+                      (35% Off on first purcase)
+                    </span>
+                  </div>
+                  <div class="muted-sm">
+                    Renews at ₹300/mo (server cost: 200, maintainance: 100)
+                  </div>
+                </div>
+                <div style="margin-left: auto">
+                  <button
+                    class="btn primary"
+                    onclick="showPROFILE('Message only when you want to deploy ur bot or Query/Suggestion regarding bot')"
+                  >
+                    Purchase / Contact Dev
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div style="width: 320px; max-width: 40%">
+              <div class="server-spec-card">
+                <h3>Server Specs</h3>
+                <ul>
+                  <li>
+                    <i class="bx bx-chip"></i> 1 vCPU – High-performance cores
+                  </li>
+                  <li>
+                    <i class="bx bx-memory-card"></i> 4GB RAM – Smooth
+                    multitasking
+                  </li>
+                  <li>
+                    <i class="bx bx-hdd"></i> SSD Storage – Fast read & write
+                  </li>
+                  <li>
+                    <i class="bx bx-line-chart"></i> 99.9% Uptime – Always
+                    online
+                  </li>
+                  <li>
+                    <i class="bx bx-world"></i> 2Gbps Bandwidth – Fast global
+                    access
+                  </li>
+                </ul>
+                <div class="spec-glow"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ENV SECTION -->
+        <section class="card" id="env">
+          <h2
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            Bot Environmental Variables
+            <button
+              class="btn"
+              style="font-size: 0.75rem"
+              onclick="downloadEnvTemplate()"
+            >
+              Download .env Template
+            </button>
+          </h2>
+
+          <p class="muted">
+            Below is the list of all environment variables required for
+            deployment. Download the <code>.env</code> template, fill in each
+            variable with your own values, then contact the developer and send
+            the completed file for setup.
+          </p>
+
+          <div class="env-grid" style="margin-top: 0.7rem">
+            <!-- example env rows -->
+            <div class="env-row">
+              <div style="flex: 1">
+                <div class="dspenvhead">
+                  <strong>API_ID</strong>
+                  <span class="badge mand">MANDATORY</span>
+                </div>
+                <div class="muted-sm">Your API ID from my.telegram.org</div>
+              </div>
+            </div>
+            <div class="env-row">
+              <div style="flex: 1">
+                <div class="dspenvhead">
+                  <strong>API_HASH</strong>
+                  <span class="badge mand">MANDATORY</span>
+                </div>
+                <div class="muted-sm">Your API HASH from my.telegram.org</div>
+              </div>
+            </div>
+            <div class="env-row">
+              <div style="flex: 1">
+                <div class="dspenvhead">
+                  <strong>BOT_TOKEN</strong>
+                  <span class="badge mand">MANDATORY</span>
+                </div>
+                <div class="muted-sm">Your bot token from @BotFather</div>
+              </div>
+            </div>
+            <div class="env-row">
+              <div style="flex: 1">
+                <div class="dspenvhead">
+                  <strong>OWNER_ID</strong>
+                  <span class="badge mand">MANDATORY</span>
+                </div>
+                <div class="muted-sm">Your Telegram user ID (numeric).</div>
+              </div>
+            </div>
+            <div class="env-row">
+              <div style="flex: 1">
+                <div class="dspenvhead">
+                  <strong>DB_CHANNEL</strong>
+                  <span class="badge mand">MANDATORY</span>
+                </div>
+                <div class="muted-sm">
+                  Telegram channel id for database channel foe files.
+                </div>
+              </div>
+            </div>
+            <div class="env-row">
+              <div style="flex: 1">
+                <div class="dspenvhead">
+                  <strong>MONGODB_URI</strong>
+                  <span class="badge mand">MANDATORY</span>
+                </div>
+                <div class="muted-sm">
+                  MongoDB connection string for storing bot data.
+                </div>
+              </div>
+            </div>
+            <div class="env-row">
+              <div style="flex: 1">
+                <div class="dspenvhead">
+                  <strong>LOG_C</strong>
+                  <span class="badge opt">OPTIONAL</span>
+                </div>
+                <div class="muted-sm">
+                  Telegram (channel/group/user) id for bot event and error logs.
+                </div>
+              </div>
+            </div>
+            <div class="env-row">
+              <div style="flex: 1">
+                <div class="dspenvhead">
+                  <strong>START_MSG_TXT</strong>
+                  <span class="badge opt">OPTIONAL</span>
+                </div>
+                <div class="muted-sm">
+                  Custom welcome message for new users.
+                </div>
+              </div>
+            </div>
+            <div class="env-row">
+              <div style="flex: 1">
+                <div class="dspenvhead">
+                  <strong>START_MSG_IMG</strong>
+                  <span class="badge opt">OPTIONAL</span>
+                </div>
+                <div class="muted-sm">
+                  Custom welcome image for new users (URL).
+                </div>
+              </div>
+            </div>
+            <div class="env-row">
+              <div style="flex: 1">
+                <div class="dspenvhead">
+                  <strong>SET_CMD</strong>
+                  <span class="badge opt">OPTIONAL</span>
+                </div>
+                <div class="muted-sm">
+                  values: "some" public commands, "most" core commands, "all"
+                  all commands.
+                </div>
+              </div>
+            </div>
+            <div class="env-row">
+              <div style="flex: 1">
+                <div class="dspenvhead">
+                  <strong>LISTEN_TIME</strong>
+                  <span class="badge opt">OPTIONAL</span>
+                </div>
+                <div class="muted-sm">
+                  how long bot shoul wait for admin response for input.
+                </div>
+              </div>
+            </div>
+            <!-- add more rows as desired -->
+          </div>
+        </section>
+
+        <!-- CREDITS -->
+        <section class="card" id="credits">
+          <h2>Developer Credits</h2>
+          <div class="dev-credits">
+            <img
+              src="https://i.ibb.co/96NjBh3/2674160680.gif"
+              alt="dev"
+              style="
+                width: 72px;
+                height: 72px;
+                border-radius: 12px;
+                object-fit: cover;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+              "
+            />
+            <div>
+              <strong>.𝟐𝐁 [""] (@schwii_bot)</strong>
+              <div class="muted-sm">
+                Developer of this bot, creator of @AnimeRobots and numerous
+                other Telegram bots. If you have an idea for a Telegram bot or
+                need support, feel free to reach out.
+              </div>
+              <div style="margin-top: 0.45rem; display: flex; gap: 0.5rem">
+                <button class="btn" onclick="OpenLink('schwii_bot')">DM</button>
+
+                <button class="btn" onclick="OpenLink('animerobots')">
+                  Channel
+                </button>
+
+                <button class="btn" onclick="showAlert('NO.')">
+                  Source Code
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div>© <span id="year"></span> @AnimeRobots • Built with ♥</div>
+        <div class="muted">
+          Made for easy deployment • Customizablility • Advanve use
+        </div>
+      </footer>
+    </div>
+    <script src="/static/scripts.js"></script>
+  </body>
+</html>
