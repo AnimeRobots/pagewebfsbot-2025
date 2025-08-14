@@ -60,7 +60,7 @@ header {
   width: clamp(40px, 5vw, 56px);
   height: clamp(40px, 5vw, 56px);
   border-radius: 12px;
-  background-image: url("logo.jpg");
+  background-image: url("https://i.ibb.co/N6fPJ9VZ/logo.jpg");
   background-size: cover;
   background-position: center;
   box-shadow: 0 6px 20px rgba(0, 217, 255, 0.12);
