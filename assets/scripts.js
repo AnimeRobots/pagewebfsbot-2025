@@ -47,7 +47,7 @@ async function copyText(text, btn = null, duration = 1200) {
 
 function downloadEnvTemplate() {
   //const fullUrl = window.location.origin + "assets/BOT.env.txt";
-  const fullUrl = "https://github.com/Ishu-Hinata/pagewebfsbot-2025/assets/BOT.env.txt";
+  const fullUrl = "https://raw.githubusercontent.com/Ishu-Hinata/pagewebfsbot-2025/refs/heads/main/assets/BOT.env.txt";
   Telegram.WebApp.downloadFile({
     url: fullUrl,
     file_name: "BOT.env.txt",
