@@ -441,9 +441,9 @@
                 </div>
               </div>
               <p>
-                Reply this cmd to a .env text file containing key value pairsmentioned below, you to enable or disbale ads-token system, when
+                Use this cmd to enable or disbale ads-token system, when
                 enabled you need to set your link shortner url and api, you can
-                also set tutorial link. Download Token.env then edit the file with your values and send to bot.
+                also set tutorial link. Download Token.env then edit the file with your values and send to bot after using command.
                 <div class="muted-sm">Arguments: <code>None  | (ReplyToMessege)</code></div>
               </p>
               
@@ -502,7 +502,7 @@
                   <span class="badge opt">OPTIONAL</span>
                 </div>
                 <div class="muted-sm">
-                  number in seconds how long user is free to use bot. default: 86400
+                  number in seconds how long verified session lasts. default: 86400
                 </div>
               </div>
             </div>
@@ -517,10 +517,26 @@
                 </div>
               </div>
             </div>
-            <div class="syntax-box">
-                <pre class="syntax"><u>SUPPORTED LINKS:</u><br />droplink.co<br />gplinks.in<br />tnlink.in<br />za.gl<br />du-link.in<br />viplink.in<br />shorturllink.in<br />shareus.in</pre>
+            <div class="env-row">
+              <div style="flex: 1">
+                <div class="dspenvhead">
+                  <strong>TOKEN_LIFETIME</strong>
+                  <span class="badge opt">OPTIONAL</span>
+                </div>
+                <div class="muted-sm">
+                  How long a pending token link is valid before the user verifies. default: 1800
+                </div>
               </div>
-          </div>
+            </div>
+            </div>
+            <div class="env-grid" style="margin-top: 0.7rem"></div>
+              <div class="syntax-box">
+                  <pre class="syntax"><u>SUPPORTED LINKS:</u><br />droplink.co<br />gplinks.in<br />tnlink.in<br />za.gl<br />du-link.in<br />viplink.in<br />shorturllink.in<br />shareus.in</pre>
+                </div>
+                <div class="syntax-box">
+                  <pre class="syntax">⚠️ If STATE=disabled:<br/>All token related values and verified-users data will be deleted, they will need to watch ads again if token system is enabled again.</pre>
+                </div>
+            </div>
                 
               </div>
             </div>
