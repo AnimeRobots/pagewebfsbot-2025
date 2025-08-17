@@ -79,11 +79,11 @@
                   </div>
                 </div>
                 <div class="feature">
-                  <div class="ic"><i class="bx bx-lock bx-md"></i></div>
+                  <div class="ic"><i class="bx bxs-videos bx-md"></i></div>
                   <div>
-                    <h4>Secure</h4>
+                    <h4>Ads-Token</h4>
                     <p class="muted-sm">
-                      Encryptions and permission layers included.
+                      Customizable Ads token system supports various sites.
                     </p>
                   </div>
                 </div>
@@ -174,318 +174,435 @@
 
         <!-- COMMANDS SECTION (merged from command.html) -->
         <section class="card" id="commands">
-          <h2>Bot Commands</h2>
+          <h2
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            Bot Commands
+            <button
+              id="cmdshowbtn"
+              class="btn primary"
+              onclick="toggleCollapse('coll-commands', 'cmdshowbtn')"
+            >
+              show
+            </button>
+          </h2>
 
-          <div class="command-card">
-            <div class="command-header dspenvhead">
-              <strong>/start</strong>
-              <div class="badges">
-                <span class="badge all"> Everyone</span>
+          <div class="collapsible.show" id="coll-commands">
+            <div class="command-card">
+              <div class="command-header dspenvhead">
+                <strong>/start</strong>
+                <div class="badges">
+                  <span class="badge all"> Everyone</span>
+                </div>
+              </div>
+              <p>
+                Check if bot is alive or not, get files, about bot & command
+                menu.
+              </p>
+              <div class="muted-sm">Arguments: <code>None</code></div>
+              <div class="syntax-box">
+                <pre class="syntax">/start</pre>
+                <button class="copy-syntax" onclick="copyText('/start', this)">
+                  Copy
+                </button>
               </div>
             </div>
-            <p>
-              Check if bot is alive or not, get files, about bot & command menu.
-            </p>
-            <div class="muted-sm">Arguments: <code>None</code></div>
-            <div class="syntax-box">
-              <pre class="syntax">/start</pre>
-              <button class="copy-syntax" onclick="copyText('/start', this)">
-                Copy
-              </button>
+            <div class="command-card">
+              <div class="command-header dspenvhead">
+                <strong class="cmd-name">/ping</strong>
+                <div class="badges">
+                  <span class="badge all">Everyone</span>
+                </div>
+              </div>
+              <p>Check bot's uptime and latency.</p>
+              <div class="muted-sm">Arguments: <code>None</code></div>
+              <div class="syntax-box">
+                <pre class="syntax">/ping</pre>
+                <button class="copy-syntax" onclick="copyText('/ping', this)">
+                  Copy
+                </button>
+              </div>
             </div>
+            <div class="command-card">
+              <div class="command-header dspenvhead">
+                <strong>/batch</strong>
+                <div class="badges">
+                  <span class="badge admin">Admin</span>
+                  <span class="badge owner">Owner</span>
+                </div>
+              </div>
+              <p>
+                Create a permanent sharable link for multiple files. Simply send
+                this cmd and bot will promt you with all necessary steps.
+              </p>
+              <div class="muted-sm">Arguments: <code>None</code></div>
+              <div class="syntax-box">
+                <pre class="syntax">/batch</pre>
+                <button class="copy-syntax" onclick="copyText('/batch', this)">
+                  Copy
+                </button>
+              </div>
+            </div>
+            <div class="command-card">
+              <div class="command-header dspenvhead">
+                <strong>/genlink</strong>
+                <div class="badges">
+                  <span class="badge admin">Admin</span>
+                  <span class="badge owner">Owner</span>
+                </div>
+              </div>
+              <p>
+                Create a permanent sharable link for a single file. Simply send
+                this cmd and bot will promt you with all necessary steps.
+              </p>
+              <div class="muted-sm">Arguments: <code>None</code></div>
+              <div class="syntax-box">
+                <pre class="syntax">/genlink</pre>
+                <button
+                  class="copy-syntax"
+                  onclick="copyText('/genlink', this)"
+                >
+                  Copy
+                </button>
+              </div>
+            </div>
+            <div class="command-card">
+              <div class="command-header dspenvhead">
+                <strong>/addadmin</strong>
+                <div class="badges">
+                  <span class="badge owner">Owner</span>
+                </div>
+              </div>
+              <p>
+                Add a user as virtual admin who can generate links or batch
+                links. This is useful for trusted users who need access to link
+                generation without full admin rights. Simply send this cmd and
+                bot will let you select user easily.
+              </p>
+              <div class="muted-sm">Arguments: <code>None</code></div>
+              <div class="syntax-box">
+                <pre class="syntax">/addadmin</pre>
+                <button
+                  class="copy-syntax"
+                  onclick="copyText('/addadmin', this)"
+                >
+                  Copy
+                </button>
+              </div>
+            </div>
+            <div class="command-card">
+              <div class="command-header dspenvhead">
+                <strong>/admins</strong>
+                <div class="badges">
+                  <span class="badge owner">Owner</span>
+                </div>
+              </div>
+              <p>
+                List all virtual admins with link to thier profile and button to
+                remove them from adminlist.
+              </p>
+              <div class="muted-sm">Arguments: <code>None</code></div>
+              <div class="syntax-box">
+                <pre class="syntax">/admins</pre>
+                <button class="copy-syntax" onclick="copyText('/admins', this)">
+                  Copy
+                </button>
+              </div>
+            </div>
+            <div class="command-card">
+              <div class="command-header dspenvhead">
+                <strong>/addfsc</strong>
+                <div class="badges">
+                  <span class="badge owner">Owner</span>
+                </div>
+              </div>
+              <p>
+                Add a group or channel as force-subscribe for bot. This will
+                require users to join the specified group/channel before using
+                the bot. Send this cmd with Arguments and bot will let you
+                select group or channel easily.<br /><br />
+                $requested : user just need to send join request to
+                group/channel
+                <br />
+                $joined : user must join the group/channel
+              </p>
+              <div class="muted-sm">
+                Arguments: <code>($requested | $joined)</code>
+              </div>
+              <div class="syntax-box">
+                <pre class="syntax">/addfsc argument (str, CaseSensitive)</pre>
+                <button
+                  class="copy-syntax"
+                  onclick="copyText('$requested or $joined   /addfsc', this)"
+                >
+                  Copy
+                </button>
+              </div>
+            </div>
+            <div class="command-card">
+              <div class="command-header dspenvhead">
+                <strong>/fsc</strong>
+                <div class="badges">
+                  <span class="badge owner">Owner</span>
+                </div>
+              </div>
+              <p>
+                List all force-subscribed groups or channels with buttons to
+                remove them from the list. This is useful for managing your
+                force-subscribe settings.
+              </p>
+              <div class="muted-sm">Arguments: <code>None</code></div>
+              <div class="syntax-box">
+                <pre class="syntax">/fsc</pre>
+                <button class="copy-syntax" onclick="copyText('/fsc', this)">
+                  Copy
+                </button>
+              </div>
+            </div>
+            <div class="command-card">
+              <div class="command-header dspenvhead">
+                <strong>/forwarding</strong>
+                <div class="badges">
+                  <span class="badge owner">Owner</span>
+                </div>
+              </div>
+              <p>
+                Enable or disable forwarding of files from the bot. When TRUE,
+                users can forward files to others; when FALSE, files can only be
+                accessed through the bot.
+              </p>
+              <div class="muted-sm">Arguments: <code>(True | False)</code></div>
+              <div class="syntax-box">
+                <pre class="syntax">/forwarding Argument (bool)</pre>
+                <button
+                  class="copy-syntax"
+                  onclick="copyText('True or false /forwarding ', this)"
+                >
+                  Copy
+                </button>
+              </div>
+            </div>
+            <div class="command-card">
+              <div class="command-header dspenvhead">
+                <strong>/deltime</strong>
+                <div class="badges">
+                  <span class="badge owner">Owner</span>
+                </div>
+              </div>
+              <p>
+                Set the auto-delete time for files stored by the bot. This
+                determines how long files will be kept before being
+                automatically deleted to protect against copyright issues.
+                <br />Enter zero to disable auto-deletion.
+              </p>
+              <div class="muted-sm">Arguments: <code>(int | 0)</code></div>
+              <div class="syntax-box">
+                <pre class="syntax">/deltime Argument (int, +)</pre>
+                <button
+                  class="copy-syntax"
+                  onclick="copyText('/deltime 60', this)"
+                >
+                  Copy
+                </button>
+              </div>
+            </div>
+            <div class="command-card">
+              <div class="command-header dspenvhead">
+                <strong>/addcaption</strong>
+                <div class="badges">
+                  <span class="badge owner">Owner</span>
+                </div>
+              </div>
+              <p>
+                Add custom captions to files sent by the bot. This allows you to
+                include file names or original captions in the bot's responses.
+                Simply send this cmd and bot will let you set caption easily.
+              </p>
+              <div class="muted-sm">Arguments: <code>None</code></div>
+              <div class="syntax-box">
+                <pre class="syntax">/addcaption</pre>
+                <button
+                  class="copy-syntax"
+                  onclick="copyText('/addcaption', this)"
+                >
+                  Copy
+                </button>
+              </div>
+            </div>
+            <div class="command-card">
+              <div class="command-header dspenvhead">
+                <strong>/setoken</strong>
+                <div class="badges">
+                  <span class="badge owner">Owner</span>
+                </div>
+              </div>
+              <p>
+                Reply this cmd to a .env text file containing key value pairsmentioned below, you to enable or disbale ads-token system, when
+                enabled you need to set your link shortner url and api, you can
+                also set tutorial link. Download Token.env then edit the file with your values and send to bot.
+                <div class="muted-sm">Arguments: <code>None  | (ReplyToMessege)</code></div>
+              </p>
+              
+              <div class="card">
+                <h3
+            style="
+              margin-top: -0.4rem;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            Bot Environmental Variables
+            <button
+              class="btn"
+              style="font-size: 0.75rem"
+              onclick="downloadTemplate('TOKEN.env.txt')"
+            >
+              Download Token.env Template
+            </button>
+          </h3>
+                
+            <div class="env-grid" style="margin-top: 0.7rem">
+            <!-- example env rows -->
+            <div class="env-row">
+              <div style="flex: 1">
+                <div class="dspenvhead">
+                  <strong>STATE</strong>
+                  <span class="badge mand">MANDATORY</span>
+                </div>
+                <div class="muted-sm">'enable' or 'disbale' token system</div>
+              </div>
+            </div>
+            <div class="env-row">
+              <div style="flex: 1">
+                <div class="dspenvhead">
+                  <strong>URL</strong>
+                  <span class="badge mand">MANDATORY</span>
+                </div>
+                <div class="muted-sm">Link shortner site such as droplink.co</div>
+              </div>
+            </div>
+            <div class="env-row">
+              <div style="flex: 1">
+                <div class="dspenvhead">
+                  <strong>API</strong>
+                  <span class="badge mand">MANDATORY</span>
+                </div>
+                <div class="muted-sm">Api key of ur account from link shortner site.</div>
+              </div>
+            </div>
+            <div class="env-row">
+              <div style="flex: 1">
+                <div class="dspenvhead">
+                  <strong>EXPIRE</strong>
+                  <span class="badge opt">OPTIONAL</span>
+                </div>
+                <div class="muted-sm">
+                  number in seconds how long user is free to use bot. default: 86400
+                </div>
+              </div>
+            </div>
+            <div class="env-row">
+              <div style="flex: 1">
+                <div class="dspenvhead">
+                  <strong>TUT</strong>
+                  <span class="badge opt">OPTIONAL</span>
+                </div>
+                <div class="muted-sm">
+                  Your tutorial link to show how to complete ads process.
+                </div>
+              </div>
+            </div>
+            <div class="syntax-box">
+                <pre class="syntax"><u>SUPPORTED LINKS:</u><br />droplink.co<br />gplinks.in<br />tnlink.in<br />za.gl<br />du-link.in<br />viplink.in<br />shorturllink.in<br />shareus.in</pre>
+              </div>
           </div>
-          <div class="command-card">
-            <div class="command-header dspenvhead">
-              <strong class="cmd-name">/ping</strong>
-              <div class="badges">
-                <span class="badge all">Everyone</span>
+                
               </div>
             </div>
-            <p>Check bot's uptime and latency.</p>
-            <div class="muted-sm">Arguments: <code>None</code></div>
-            <div class="syntax-box">
-              <pre class="syntax">/ping</pre>
-              <button class="copy-syntax" onclick="copyText('/ping', this)">
-                Copy
-              </button>
-            </div>
-          </div>
-          <div class="command-card">
-            <div class="command-header dspenvhead">
-              <strong>/batch</strong>
-              <div class="badges">
-                <span class="badge admin">Admin</span>
-                <span class="badge owner">Owner</span>
+            <div class="command-card">
+              <div class="command-header dspenvhead">
+                <strong>/formatb</strong>
+                <div class="badges">
+                  <span class="badge dev">Devs</span>
+                  <span class="badge owner">Owner</span>
+                </div>
+              </div>
+              <p>
+                Format the replied message to include buttons to broadcast the
+                message.
+              </p>
+              <div class="muted-sm">Arguments: <code>None</code></div>
+              <div class="syntax-box">
+                <pre class="syntax">/formatb (ReplyToMessege)</pre>
+                <button
+                  class="copy-syntax"
+                  onclick="copyText('/formatb', this)"
+                >
+                  Copy
+                </button>
               </div>
             </div>
-            <p>
-              Create a permanent sharable link for multiple files. Simply send
-              this cmd and bot will promt you with all necessary steps.
-            </p>
-            <div class="muted-sm">Arguments: <code>None</code></div>
-            <div class="syntax-box">
-              <pre class="syntax">/batch</pre>
-              <button class="copy-syntax" onclick="copyText('/batch', this)">
-                Copy
-              </button>
-            </div>
-          </div>
-          <div class="command-card">
-            <div class="command-header dspenvhead">
-              <strong>/genlink</strong>
-              <div class="badges">
-                <span class="badge admin">Admin</span>
-                <span class="badge owner">Owner</span>
+            <div class="command-card">
+              <div class="command-header dspenvhead">
+                <strong>/broadcast</strong>
+                <div class="badges">
+                  <span class="badge dev">Devs</span>
+                  <span class="badge owner">Owner</span>
+                </div>
               </div>
-            </div>
-            <p>
-              Create a permanent sharable link for a single file. Simply send
-              this cmd and bot will promt you with all necessary steps.
-            </p>
-            <div class="muted-sm">Arguments: <code>None</code></div>
-            <div class="syntax-box">
-              <pre class="syntax">/genlink</pre>
-              <button class="copy-syntax" onclick="copyText('/genlink', this)">
-                Copy
-              </button>
-            </div>
-          </div>
-          <div class="command-card">
-            <div class="command-header dspenvhead">
-              <strong>/addadmin</strong>
-              <div class="badges">
-                <span class="badge owner">Owner</span>
+              <p>
+                Broadcast a message to all users who have interacted with the
+                bot. This command allows you to send important updates or
+                announcements to all users. You must reply to a message with
+                cmd.<br /><br />
+                $forward : forward the message to all users else copy message
+                (as bot)<br />
+                $pin : pin the message in the channel where bot is running.
+                <br /><br />
+                Tip: Use <code>/formatb</code> to format the message before
+                broadcasting.
+              </p>
+              <div class="muted-sm">
+                Arguments: <code>($pin |& $forward)</code>
               </div>
-            </div>
-            <p>
-              Add a user as virtual admin who can generate links or batch links.
-              This is useful for trusted users who need access to link
-              generation without full admin rights. Simply send this cmd and bot
-              will let you select user easily.
-            </p>
-            <div class="muted-sm">Arguments: <code>None</code></div>
-            <div class="syntax-box">
-              <pre class="syntax">/addadmin</pre>
-              <button class="copy-syntax" onclick="copyText('/addadmin', this)">
-                Copy
-              </button>
-            </div>
-          </div>
-          <div class="command-card">
-            <div class="command-header dspenvhead">
-              <strong>/admins</strong>
-              <div class="badges">
-                <span class="badge owner">Owner</span>
-              </div>
-            </div>
-            <p>
-              List all virtual admins with link to thier profile and button to
-              remove them from adminlist.
-            </p>
-            <div class="muted-sm">Arguments: <code>None</code></div>
-            <div class="syntax-box">
-              <pre class="syntax">/admins</pre>
-              <button class="copy-syntax" onclick="copyText('/admins', this)">
-                Copy
-              </button>
-            </div>
-          </div>
-          <div class="command-card">
-            <div class="command-header dspenvhead">
-              <strong>/addfsc</strong>
-              <div class="badges">
-                <span class="badge owner">Owner</span>
-              </div>
-            </div>
-            <p>
-              Add a group or channel as force-subscribe for bot. This will
-              require users to join the specified group/channel before using the
-              bot. Send this cmd with Arguments and bot will let you select
-              group or channel easily.<br /><br />
-              $requested : user just need to send join request to group/channel
-              <br />
-              $joined : user must join the group/channel
-            </p>
-            <div class="muted-sm">
-              Arguments: <code>($requested | $joined)</code>
-            </div>
-            <div class="syntax-box">
-              <pre class="syntax">/addfsc argument (str, CaseSensitive)</pre>
-              <button
-                class="copy-syntax"
-                onclick="copyText('$requested or $joined   /addfsc', this)"
-              >
-                Copy
-              </button>
-            </div>
-          </div>
-          <div class="command-card">
-            <div class="command-header dspenvhead">
-              <strong>/fsc</strong>
-              <div class="badges">
-                <span class="badge owner">Owner</span>
-              </div>
-            </div>
-            <p>
-              List all force-subscribed groups or channels with buttons to
-              remove them from the list. This is useful for managing your
-              force-subscribe settings.
-            </p>
-            <div class="muted-sm">Arguments: <code>None</code></div>
-            <div class="syntax-box">
-              <pre class="syntax">/fsc</pre>
-              <button class="copy-syntax" onclick="copyText('/fsc', this)">
-                Copy
-              </button>
-            </div>
-          </div>
-          <div class="command-card">
-            <div class="command-header dspenvhead">
-              <strong>/forwarding</strong>
-              <div class="badges">
-                <span class="badge owner">Owner</span>
-              </div>
-            </div>
-            <p>
-              Enable or disable forwarding of files from the bot. When TRUE,
-              users can forward files to others; when FALSE, files can only be
-              accessed through the bot.
-            </p>
-            <div class="muted-sm">Arguments: <code>(True | False)</code></div>
-            <div class="syntax-box">
-              <pre class="syntax">
-/forwarding Argument (bool, CaseInsensitive)</pre
-              >
-              <button
-                class="copy-syntax"
-                onclick="copyText('True or false /forwarding ', this)"
-              >
-                Copy
-              </button>
-            </div>
-          </div>
-          <div class="command-card">
-            <div class="command-header dspenvhead">
-              <strong>/deltime</strong>
-              <div class="badges">
-                <span class="badge owner">Owner</span>
-              </div>
-            </div>
-            <p>
-              Set the auto-delete time for files stored by the bot. This
-              determines how long files will be kept before being automatically
-              deleted to protect against copyright issues. <br />Enter zero to
-              disable auto-deletion.
-            </p>
-            <div class="muted-sm">Arguments: <code>(int | 0)</code></div>
-            <div class="syntax-box">
-              <pre class="syntax">/deltime Argument (int, +)</pre>
-              <button
-                class="copy-syntax"
-                onclick="copyText('/deltime 60', this)"
-              >
-                Copy
-              </button>
-            </div>
-          </div>
-          <div class="command-card">
-            <div class="command-header dspenvhead">
-              <strong>/addcaption</strong>
-              <div class="badges">
-                <span class="badge owner">Owner</span>
-              </div>
-            </div>
-            <p>
-              Add custom captions to files sent by the bot. This allows you to
-              include file names or original captions in the bot's responses.
-              Simply send this cmd and bot will let you set caption easily.
-            </p>
-            <div class="muted-sm">Arguments: <code>None</code></div>
-            <div class="syntax-box">
-              <pre class="syntax">/addcaption</pre>
-              <button
-                class="copy-syntax"
-                onclick="copyText('/addcaption', this)"
-              >
-                Copy
-              </button>
-            </div>
-          </div>
-          <div class="command-card">
-            <div class="command-header dspenvhead">
-              <strong>/formatb</strong>
-              <div class="badges">
-                <span class="badge dev">Devs</span>
-                <span class="badge owner">Owner</span>
-              </div>
-            </div>
-            <p>
-              Format the replied message to include buttons to broadcast the
-              message.
-            </p>
-            <div class="muted-sm">Arguments: <code>None</code></div>
-            <div class="syntax-box">
-              <pre class="syntax">/formatb (ReplyToMessege)</pre>
-              <button class="copy-syntax" onclick="copyText('/formatb', this)">
-                Copy
-              </button>
-            </div>
-          </div>
-          <div class="command-card">
-            <div class="command-header dspenvhead">
-              <strong>/broadcast</strong>
-              <div class="badges">
-                <span class="badge dev">Devs</span>
-                <span class="badge owner">Owner</span>
-              </div>
-            </div>
-            <p>
-              Broadcast a message to all users who have interacted with the bot.
-              This command allows you to send important updates or announcements
-              to all users. You must reply to a message with cmd.<br /><br />
-              $forward : forward the message to all users else copy message (as
-              bot)<br />
-              $pin : pin the message in the channel where bot is running.
-              <br /><br />
-              Tip: Use <code>/formatb</code> to format the message before
-              broadcasting.
-            </p>
-            <div class="muted-sm">
-              Arguments: <code>($pin |& $forward)</code>
-            </div>
-            <div class="syntax-box">
-              <pre class="syntax">
+              <div class="syntax-box">
+                <pre class="syntax">
 /broadcast Arguments(Str, CaseSensitive) (ReplyToMessege)</pre
-              >
-              <button
-                class="copy-syntax"
-                onclick="copyText('/broadcast', this)"
-              >
-                Copy
-              </button>
-            </div>
-          </div>
-
-          <div class="command-card">
-            <div class="command-header dspenvhead">
-              <strong>/stats</strong>
-              <div class="badges">
-                <span class="badge dev">Devs</span>
-                <span class="badge owner">Owner</span>
+                >
+                <button
+                  class="copy-syntax"
+                  onclick="copyText('/broadcast', this)"
+                >
+                  Copy
+                </button>
               </div>
             </div>
-            <p>
-              Check bot statistics including total users, database usage,
-              settings, and server status. This command provides an overview of
-              the bot's resource usage and health, helping you monitor
-              performance and capacity.
-            </p>
-            <div class="muted-sm">Arguments: <code>None</code></div>
-            <div class="syntax-box">
-              <pre class="syntax">/stats</pre>
-              <button class="copy-syntax" onclick="copyText('/stats', this)">
-                Copy
-              </button>
+            <div class="command-card">
+              <div class="command-header dspenvhead">
+                <strong>/stats</strong>
+                <div class="badges">
+                  <span class="badge dev">Devs</span>
+                  <span class="badge owner">Owner</span>
+                </div>
+              </div>
+              <p>
+                Check bot statistics including total users, database usage,
+                settings, and server status. This command provides an overview
+                of the bot's resource usage and health, helping you monitor
+                performance and capacity.
+              </p>
+              <div class="muted-sm">Arguments: <code>None</code></div>
+              <div class="syntax-box">
+                <pre class="syntax">/stats</pre>
+                <button class="copy-syntax" onclick="copyText('/stats', this)">
+                  Copy
+                </button>
+              </div>
             </div>
           </div>
         </section>
@@ -581,9 +698,9 @@
             <button
               class="btn"
               style="font-size: 0.75rem"
-              onclick="downloadEnvTemplate()"
+              onclick="downloadEnvTemplate('BOT.env.txt')"
             >
-              Download .env Template
+              Download Deploy.env Template
             </button>
           </h2>
 
@@ -684,18 +801,6 @@
                 </div>
                 <div class="muted-sm">
                   Custom welcome image for new users (URL).
-                </div>
-              </div>
-            </div>
-            <div class="env-row">
-              <div style="flex: 1">
-                <div class="dspenvhead">
-                  <strong>SET_CMD</strong>
-                  <span class="badge opt">OPTIONAL</span>
-                </div>
-                <div class="muted-sm">
-                  values: "some" public commands, "most" core commands, "all"
-                  all commands.
                 </div>
               </div>
             </div>

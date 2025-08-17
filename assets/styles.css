@@ -529,3 +529,15 @@ footer {
     transform: rotate(360deg);
   }
 }
+
+.collapsible {
+  max-height: 0; /* start hidden */
+  overflow: hidden; /* hide content when collapsed */
+  transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+  padding: 0; /* no padding when hidden */
+}
+
+.collapsible.open {
+  max-height: 500px; /* large enough to fit content */
+  padding: 0.5rem; /* show padding when open */
+}

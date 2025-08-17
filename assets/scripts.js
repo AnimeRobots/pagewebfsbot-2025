@@ -45,13 +45,31 @@ async function copyText(text, btn = null, duration = 1200) {
   }
 }
 
-function downloadEnvTemplate() {
+function downloadTemplate(FileName) {
   //const fullUrl = window.location.origin + "assets/BOT.env.txt";
-  const fullUrl = "https://raw.githubusercontent.com/Ishu-Hinata/pagewebfsbot-2025/refs/heads/main/assets/BOT.env.txt";
+  const fullUrl =
+    "https://raw.githubusercontent.com/Ishu-Hinata/pagewebfsbot-2025/refs/heads/main/assets/" +
+    FileName;
   Telegram.WebApp.downloadFile({
     url: fullUrl,
-    file_name: "BOT.env.txt",
+    file_name: FileName,
   });
+}
+
+function toggleCollapse(id, btnid) {
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  el.classList.toggle("open");
+
+  // optional: adjust max-height dynamically so it fits content exactly
+  if (el.classList.contains("open")) {
+    el.style.maxHeight = el.scrollHeight + "px";
+    document.getElementById(btnid).textContent = "hide";
+  } else {
+    el.style.maxHeight = null; // back to collapsed
+    document.getElementById(btnid).textContent = "show";
+  }
 }
 
 // place badge properly for env rows
