@@ -447,6 +447,31 @@
             </div>
             <div class="command-card">
               <div class="command-header dspenvhead">
+                <strong>/limituse</strong>
+                <div class="badges">
+                  <span class="badge owner">Owner</span>
+                </div>
+              </div>
+              <p>
+                Set a usage limit and renewal period for each user. The
+                <b>limit</b> is the maximum number of times a user can use the
+                bot within the <b>renew</b> period (in seconds). After the
+                renewal period, the usage count resets. Set both values to zero
+                to disable usage limits. Example: <code>/limituse 0 0</code>
+              </p>
+              <div class="muted-sm">Arguments: <code>(int int | 0)</code></div>
+              <div class="syntax-box">
+                <pre class="syntax">/limituse Argument Argument(int, +)</pre>
+                <button
+                  class="copy-syntax"
+                  onclick="copyText('/limituse 5 86400', this)"
+                >
+                  Copy
+                </button>
+              </div>
+            </div>
+            <div class="command-card">
+              <div class="command-header dspenvhead">
                 <strong>/setoken</strong>
                 <div class="badges">
                   <span class="badge owner">Owner</span>
@@ -566,7 +591,6 @@
                 </div>
               </div>
             </div>
-
             <div class="command-card">
               <div class="command-header dspenvhead">
                 <strong>/formatb</strong>
