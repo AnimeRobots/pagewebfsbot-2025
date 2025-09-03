@@ -542,3 +542,29 @@ footer {
   max-height: 500px; /* large enough to fit content */
   padding: 0.5rem; /* show padding when open */
 }
+.plan-radio {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+.plan-radio:checked::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.basic-radio:checked::after {
+  background-color: #007bff; /* Blue */
+}
+.premium-radio:checked::after {
+  background-color: #28a745; /* Green */
+}

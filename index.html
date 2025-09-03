@@ -28,7 +28,6 @@
     <canvas id="bgCanvas"></canvas>
     <div class="blob b1"></div>
     <div class="blob b2"></div>
-    <div class="blob b1"></div>
 
     <div class="container">
       <header>
@@ -42,11 +41,7 @@
             </p>
           </div>
         </div>
-        <nav class="nav" aria-label="Primary">
-          <button class="btn primary" onclick="location.href='#deploy'">
-            Contact / Deploy
-          </button>
-        </nav>
+        <nav class="nav" aria-label="Primary"></nav>
       </header>
 
       <main>
@@ -62,7 +57,18 @@
             "
           >
             <div style="flex: 1; min-width: 220px">
-              <h2>About this bot & features</h2>
+              <h2
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                "
+              >
+                About this bot & features
+                <button class="btn primary" onclick="location.href='#deploy'">
+                  Contact / Deploy
+                </button>
+              </h2>
               <p class="muted">
                 A Telegram bot designed to store posts and documents, accessible
                 through special links. This bot provides a convenient way to
@@ -676,7 +682,7 @@
         </section>
 
         <!-- DEPLOY / PRICING / CONTACT -->
-        <!-- DEPLOY TEST -->
+        <!-- DEPLOY TEST zzzzz-->
         <section class="card" id="deploy">
           <div
             style="
@@ -694,6 +700,72 @@
                 server costs. Enjoy zero downtime and seamless performance for
                 100+ users simultaneously.
               </p>
+
+              <!-- 🔘 Plan Selector -->
+              <div
+                style="
+                  margin-top: 0.8rem;
+                  display: flex;
+                  gap: 1.5rem;
+                  align-items: center;
+                "
+              >
+                <label
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.4rem;
+                    cursor: pointer;
+                  "
+                >
+                  <input
+                    type="radio"
+                    name="plan"
+                    value="basic"
+                    checked
+                    onchange="showPlan(this.value)"
+                    class="plan-radio basic-radio"
+                  />
+                  <span>Basic</span>
+                </label>
+                <label
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.4rem;
+                    cursor: pointer;
+                  "
+                >
+                  <input
+                    type="radio"
+                    name="plan"
+                    value="premium"
+                    onchange="showPlan(this.value)"
+                    class="plan-radio premium-radio"
+                  />
+                  <span>Premium</span>
+                </label>
+              </div>
+              <ul
+                id="plan-basic"
+                class="muted-sm"
+                style="margin-top: 0.6rem; padding-left: 1rem"
+              >
+                <li>Allow Ads</li>
+                <li>Self-managed configuration</li>
+                <li>Standard Support</li>
+              </ul>
+              <ul
+                id="plan-premium"
+                class="muted-sm"
+                style="margin-top: 0.6rem; padding-left: 1rem; display: none"
+              >
+                <li>No ads</li>
+                <li>Custom Features</li>
+                <li>We provide Api id/hash & MongoDB</li>
+                <li>Better Server Specs</li>
+                <li>Priority Support</li>
+              </ul>
               <div
                 style="
                   margin-top: 0.6rem;
@@ -702,17 +774,26 @@
                   align-items: center;
                 "
               >
-                <div>
-                  <div style="font-size: 1.35rem; font-weight: 800">
+                <div id="price-box">
+                  <div
+                    style="font-size: 1.35rem; font-weight: 800; color: #fff"
+                  >
                     ₹199
-                    <span style="font-size: 0.95rem; font-weight: 800">
-                      (35% Off on first purcase)
-                    </span>
+                    <span
+                      id="price-label"
+                      style="
+                        font-size: 0.95rem;
+                        font-weight: 800;
+                        color: #007bff;
+                      "
+                      >/mo</span
+                    >
                   </div>
-                  <div class="muted-sm">
-                    Renews at ₹300/mo (server cost: 200, maintainance: 100)
+                  <div id="price-note" class="muted-sm">
+                    Renews at ₹300/mo (server cost: 200, maintenance: 100)
                   </div>
                 </div>
+
                 <div style="margin-left: auto">
                   <button
                     class="btn primary"
@@ -727,14 +808,25 @@
             <div style="width: 320px; max-width: 40%">
               <div class="server-spec-card">
                 <h3>Server Specs</h3>
-                <ul>
+
+                <!-- Basic Specs -->
+                <ul id="spec-basic">
+                  <li><i class="bx bx-chip"></i> 0.5 vCPU – Shared core</li>
+                  <li><i class="bx bx-memory-card"></i> 1GB RAM</li>
                   <li>
-                    <i class="bx bx-chip"></i> 1 vCPU – High-performance cores
+                    <i class="bx bx-hdd"></i> SSD Storage – Fast read & write
                   </li>
                   <li>
-                    <i class="bx bx-memory-card"></i> 4GB RAM – Smooth
-                    multitasking
+                    <i class="bx bx-line-chart"></i> 99.9% Uptime – Always
+                    online
                   </li>
+                  <li><i class="bx bx-world"></i> 100 Mbps Bandwidth</li>
+                </ul>
+
+                <!-- Premium Specs -->
+                <ul id="spec-premium" style="display: none">
+                  <li><i class="bx bx-chip"></i> 1 vCPU – Dedicated</li>
+                  <li><i class="bx bx-memory-card"></i> 4GB RAM</li>
                   <li>
                     <i class="bx bx-hdd"></i> SSD Storage – Fast read & write
                   </li>
@@ -747,6 +839,7 @@
                     access
                   </li>
                 </ul>
+
                 <div class="spec-glow"></div>
               </div>
             </div>

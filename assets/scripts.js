@@ -44,7 +44,36 @@ async function copyText(text, btn = null, duration = 1200) {
     console.error("copy failed", err);
   }
 }
+function showPlan(plan) {
+  // toggle features
+  document.getElementById("plan-basic").style.display =
+    plan === "basic" ? "block" : "none";
+  document.getElementById("plan-premium").style.display =
+    plan === "premium" ? "block" : "none";
 
+  // toggle specs
+  document.getElementById("spec-basic").style.display =
+    plan === "basic" ? "block" : "none";
+  document.getElementById("spec-premium").style.display =
+    plan === "premium" ? "block" : "none";
+
+  // toggle pricing
+  let priceBox = document.getElementById("price-box");
+  let priceLabel = document.getElementById("price-label");
+  let priceNote = document.getElementById("price-note");
+
+  if (plan === "basic") {
+    priceBox.querySelector("div").innerHTML =
+      "₹199 <span id='price-label' style='font-size:0.95rem; font-weight:800; color:#007bff;'>/mo</span>";
+    priceNote.innerText =
+      "Renews at ₹300/mo (server cost: 200, maintenance: 100)";
+  } else {
+    priceBox.querySelector("div").innerHTML =
+      "₹599 <span id='price-label' style='font-size:0.95rem; font-weight:800; color:#28a745;'>/mo</span>";
+    priceNote.innerText =
+      "Includes server cost (200) + managed MongoDB + maintenance";
+  }
+}
 function downloadTemplate(FileName) {
   //const fullUrl = window.location.origin + "assets/BOT.env.txt";
   const fullUrl =
