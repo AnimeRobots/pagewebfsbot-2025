@@ -24,6 +24,7 @@ body {
   color: #e6eef6;
   background: linear-gradient(180deg, #060608 0%, var(--bg) 100%);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 /* live canvas background sits behind everything */
