@@ -479,127 +479,6 @@
             </div>
             <div class="command-card">
               <div class="command-header dspenvhead">
-                <strong>/setoken</strong>
-                <div class="badges">
-                  <span class="badge owner">Owner</span>
-                </div>
-              </div>
-              <p>
-                Use this cmd to enable or disbale ads-token system, when enabled
-                you need to set your link shortner url and api, you can also set
-                tutorial link. Download Token.env then edit the file with your
-                values and send to bot after using command.
-                <span class="muted-sm"
-                  >Arguments: <code>None | (ReplyToMessege)</code></span
-                >
-              </p>
-
-              <div class="command-card">
-                <h3
-                  style="
-                    margin-top: -0.4rem;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                  "
-                >
-                  Token Variables
-                  <button
-                    class="btn"
-                    style="font-size: 0.75rem"
-                    onclick="downloadTemplate('TOKEN.env.txt')"
-                  >
-                    Download Token.env Template
-                  </button>
-                </h3>
-
-                <div class="env-grid" style="margin-top: 0.7rem">
-                  <!-- example env rows -->
-                  <div class="env-row">
-                    <div style="flex: 1">
-                      <div class="dspenvhead">
-                        <strong>STATE</strong>
-                        <span class="badge mand">MANDATORY</span>
-                      </div>
-                      <div class="muted-sm">
-                        'enable' or 'disbale' token system
-                      </div>
-                    </div>
-                  </div>
-                  <div class="env-row">
-                    <div style="flex: 1">
-                      <div class="dspenvhead">
-                        <strong>URL</strong>
-                        <span class="badge mand">MANDATORY</span>
-                      </div>
-                      <div class="muted-sm">
-                        Link shortner site such as droplink.co
-                      </div>
-                    </div>
-                  </div>
-                  <div class="env-row">
-                    <div style="flex: 1">
-                      <div class="dspenvhead">
-                        <strong>API</strong>
-                        <span class="badge mand">MANDATORY</span>
-                      </div>
-                      <div class="muted-sm">
-                        Api key of ur account from link shortner site.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="env-row">
-                    <div style="flex: 1">
-                      <div class="dspenvhead">
-                        <strong>EXPIRE</strong>
-                        <span class="badge opt">OPTIONAL</span>
-                      </div>
-                      <div class="muted-sm">
-                        number in seconds how long verified session lasts.
-                        default: 86400
-                      </div>
-                    </div>
-                  </div>
-                  <div class="env-row">
-                    <div style="flex: 1">
-                      <div class="dspenvhead">
-                        <strong>TUT</strong>
-                        <span class="badge opt">OPTIONAL</span>
-                      </div>
-                      <div class="muted-sm">
-                        Your tutorial link to show how to complete ads process.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="env-row">
-                    <div style="flex: 1">
-                      <div class="dspenvhead">
-                        <strong>TOKEN_LIFETIME</strong>
-                        <span class="badge opt">OPTIONAL</span>
-                      </div>
-                      <div class="muted-sm">
-                        How long a pending token link is valid before the user
-                        verifies. default: 1800
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="env-grid" style="margin-top: 0.7rem">
-                  <div class="syntax-box">
-                    <pre
-                      class="syntax"
-                    ><u>SUPPORTED LINKS:</u><br />droplink.co<br />gplinks.in<br />tnlink.in<br />za.gl<br />du-link.in<br />viplink.in<br />shorturllink.in<br />shareus.in</pre>
-                  </div>
-                  <div class="syntax-box">
-                    <pre
-                      class="syntax"
-                    >⚠️ If STATE=disabled:<br/>All token related values and verified-users data will be deleted, they will need to watch ads again if token system is enabled again.</pre>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="command-card">
-              <div class="command-header dspenvhead">
                 <strong>/formatb</strong>
                 <div class="badges">
                   <span class="badge dev">Devs</span>
@@ -633,16 +512,21 @@
                 Broadcast a message to all users who have interacted with the
                 bot. This command allows you to send important updates or
                 announcements to all users. You must reply to a message with
-                cmd.<br /><br />
-                $forward : forward the message to all users else copy message
-                (as bot)<br />
-                $pin : pin the message in the channel where bot is running.
-                <br /><br />
+                cmd.<br />
+                <ul>
+                  <li>$forward : forward the message to all users else copy message
+                (as bot)</li>
+              <li>$pin : pin the message in the channel where bot is running.</li>
+              <li>$keepids : Do not delete users from databse.</li>
+              <li>$testmode : Sends message and quickly deletes it ($pin is ignored).</li>
+            </ul>
+                <br />
+                
                 Tip: Use <code>/formatb</code> to format the message before
                 broadcasting.
               </p>
               <div class="muted-sm">
-                Arguments: <code>($pin |& $forward)</code>
+                Arguments: <code>($pin / $forward / $keepids / $testmode)</code>
               </div>
               <div class="syntax-box">
                 <pre class="syntax">
@@ -790,7 +674,7 @@
                     >
                   </div>
                   <div id="price-note" class="muted-sm">
-                    Renews at ₹300/mo (server cost: 200, maintenance: 100)
+                    Renews at ₹350/mo (server cost: 300, maintenance: 50)
                   </div>
                 </div>
 
@@ -946,7 +830,7 @@
             <div class="env-row">
               <div style="flex: 1">
                 <div class="dspenvhead">
-                  <strong>START_MSG_TXT</strong>
+                  <strong>START_MSG</strong>
                   <span class="badge opt">OPTIONAL</span>
                 </div>
                 <div class="muted-sm">
@@ -957,7 +841,7 @@
             <div class="env-row">
               <div style="flex: 1">
                 <div class="dspenvhead">
-                  <strong>START_MSG_IMG</strong>
+                  <strong>START_IMG</strong>
                   <span class="badge opt">OPTIONAL</span>
                 </div>
                 <div class="muted-sm">

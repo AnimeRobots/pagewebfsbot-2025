@@ -66,12 +66,12 @@ function showPlan(plan) {
     priceBox.querySelector("div").innerHTML =
       "₹199 <span id='price-label' style='font-size:0.95rem; font-weight:800; color:#007bff;'>/mo</span>";
     priceNote.innerText =
-      "Renews at ₹300/mo (server cost: 200, maintenance: 100)";
+      "Renews at ₹350/mo (server cost: 300, maintenance: 50)";
   } else {
     priceBox.querySelector("div").innerHTML =
       "₹599 <span id='price-label' style='font-size:0.95rem; font-weight:800; color:#28a745;'>/mo</span>";
     priceNote.innerText =
-      "Includes server cost (200) + managed MongoDB + maintenance";
+      "Includes server cost (500/-) + MongoDB + maintenance";
   }
 }
 function downloadTemplate(FileName) {
