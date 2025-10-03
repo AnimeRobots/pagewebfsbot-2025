@@ -464,7 +464,7 @@
                 <b>limit</b> is the maximum number of times a user can use the
                 bot within the <b>renew</b> period (in seconds). After the
                 renewal period, the usage count resets. Set both values to zero
-                to disable usage limits. Example: <code>/limituse 0 0</code>
+                to disable usage limits. Example:
               </p>
               <div class="muted-sm">Arguments: <code>(int int | 0)</code></div>
               <div class="syntax-box">
@@ -472,6 +472,28 @@
                 <button
                   class="copy-syntax"
                   onclick="copyText('/limituse 5 86400', this)"
+                >
+                  Copy
+                </button>
+              </div>
+            </div>
+            <div class="command-card">
+              <div class="command-header dspenvhead">
+                <strong>/setoken</strong>
+                <div class="badges">
+                  <span class="badge owner">Owner</span>
+                </div>
+              </div>
+              <p>
+                Ad-based verification system: Users receive a short link that shows ads. 
+                After completing the ad flow, the system marks them verified and issues a time-limited access token, granting temporary access to bot. simply send the cmd bot will guide the rest.
+              </p>
+              <div class="muted-sm">Arguments: <code>None</code></div>
+              <div class="syntax-box">
+                <pre class="syntax">/setoken </pre>
+                <button
+                  class="copy-syntax"
+                  onclick="copyText('/setoken', this)"
                 >
                   Copy
                 </button>
@@ -678,18 +700,13 @@
                   </div>
                 </div>
 
-                <div style="margin-left: auto">
-                  <button
-                    class="btn primary"
-                    onclick="showPROFILE('Message only when you want to deploy ur bot or Query/Suggestion regarding bot')"
-                  >
-                    Purchase / Contact Dev
-                  </button>
-                </div>
+                
               </div>
+              
             </div>
+            
 
-            <div style="width: 320px; max-width: 40%">
+            <div style="margin: 0;">
               <div class="server-spec-card">
                 <h3>Server Specs</h3>
 
@@ -727,6 +744,14 @@
                 <div class="spec-glow"></div>
               </div>
             </div>
+          </div>
+          <div style="margin: 1rem;margin-top: 1.2rem; display: flex; justify-content: center;">
+            <button
+              class="btn primary" style="width: 100%;cursor: pointer;transition: background 0.25s;"
+              onclick="showPROFILE('Message only when you want to deploy ur bot or Query/Suggestion regarding bot')"
+            >
+              Purchase / Contact Dev
+            </button>
           </div>
         </section>
 

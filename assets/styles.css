@@ -26,6 +26,11 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem; /* still works */
+}
 
 /* live canvas background sits behind everything */
 #bgCanvas {
@@ -40,7 +45,6 @@ body {
   position: relative;
   z-index: 2;
   max-width: None; /*var(--max-width);*/
-  width: 100%; /*calc(100% - 2rem);*/
   margin: clamp(16px, 4vw, 48px) auto;
   padding: clamp(12px, 3vw, 36px);
 }
@@ -101,12 +105,6 @@ p.lead {
 }
 .btn.primary {
   padding: 0.6rem 0.9rem;
-}
-
-main {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
 }
 
 /* card */
@@ -478,7 +476,6 @@ footer {
 }
 
 .server-spec-card {
-  position: relative;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius);
